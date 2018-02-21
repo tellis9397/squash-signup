@@ -1,0 +1,23 @@
+<%= form_for(@user_show) do |f| %>
+  <% if user_show.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user_show.errors.count, "error") %> prohibited this user_show from being saved:</h2>
+
+      <ul>
+      <% user_show.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="actions">
+    <%= hidden_field_tag(:user_id, params[:user]) %>
+    <%= f.submit "Search" %>
+  </div>
+<% end %>

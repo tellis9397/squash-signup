@@ -1,0 +1,10 @@
+<div class="center jumbotron">
+	<h1>Squash Signup</h1>
+
+	<h2>
+	    Keep ahead of those assholes that steal your courts!
+	</h2>
+	<% unless logged_in? %>
+		<%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+	<% end %>
+</div>

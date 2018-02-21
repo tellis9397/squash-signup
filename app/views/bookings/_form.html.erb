@@ -1,0 +1,50 @@
+<%= form_for([@user, @booking]) do |f| %>
+  <% if booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+      <ul>
+      <% booking.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if @user %>
+    <%= f.hidden_field :user_id, value: @user.id %>
+  <% end %>
+
+  <div class="select">
+    <%= f.label :day_of_week %>
+    <%= f.select(:day_of_week, options_for_select(booking.booking_days)) %>
+  </div>
+
+  <div class="select">
+    <%= f.label :time %>
+    <%= f.select(:time, options_for_select(booking.booking_times)) %>
+  </div>
+
+  <div class="field" >
+    <%= f.label :opponent_first %>
+    <%= f.text_field(:opponent_first) %>
+    <%= f.label :opponent_last %>
+    <%= f.text_field(:opponent_last) %>
+  </div>
+
+  <div class="check_box">
+    <%= f.label :recurring do %>
+      Recurring? <%= f.check_box(:recurring) %>
+    <% end %>
+  </div>
+
+  <div class="check_box">
+    <%= f.label :day_of_play do %>
+      Day of Play? <%= f.check_box(:day_of_play) %>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

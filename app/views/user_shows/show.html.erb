@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @user_show.title %></br>
+  <strong>Last Watched:</strong>
+  <%= "Season #{@user_show.current_season}, Episode #{@user_show.current_episode}" %>
+</p>
+
+<p>
+	<strong>Caught up?:</strong>
+	<% if @user_show.is_current? %>
+		<%= "You're up to date on #{@user_show.title}!" %>
+	<% else %>
+		<%= "You're behind by (episode count goes here) episodes" %>
+	<% end %>
+</p>
+
+<%= link_to 'Back', user_path(@user_show.user) %>

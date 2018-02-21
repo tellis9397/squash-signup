@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @booking.day_of_week %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @booking.time %>
+</p>
+
+<p>
+  <strong>Opponent:</strong>
+  <%= "#{@booking.opponent_s}" %>
+</p>
+
+<p>
+	<strong>Type:</strong>
+	<%= @booking.type %>
+</p>
+
+<p>
+	<strong>State:</strong>
+	<%= @booking.state %>
+</p>
+
+<%= link_to 'Edit', edit_user_booking_path(@booking) %> |
+<%= link_to 'Back', current_user %>

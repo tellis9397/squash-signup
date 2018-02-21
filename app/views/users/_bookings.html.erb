@@ -1,0 +1,38 @@
+<article id="bookings">
+	<h1>Bookings</h1>
+
+	<% if @user.bookings.empty? %>
+		No Bookings<br/>
+	<% else %>
+		<table class="gtable">
+			<thead>
+				<tr>
+					<th>Day</th>
+					<th>Time</th>
+					<th>Opponent</th>
+					<th>Type</th>
+					<th>State</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @user.bookings.each do |booking| %>
+					<tr>
+						<td><%= booking.day_of_week %></td>
+						<td><%= booking.time %></td>
+						<td><%= "#{booking.opponent_s}" %></td>
+						<td><%= booking.type %></td>
+						<td><%= booking.state %></td>
+						<td class="nowrap">
+							<%= link_to 'show', user_booking_path(@user, booking.id) %>
+							<%= link_to 'edit', edit_user_booking_path(@user, booking.id) %>
+							<%= link_to 'remove', user_booking_path(@user, booking.id), method: :delete, data: {confirm: 'You sure?'} %>
+						</td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<% end %>
+
+	<br><%= link_to 'Add a booking!', new_user_booking_path(@user) %>
+</article>

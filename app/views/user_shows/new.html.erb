@@ -1,0 +1,18 @@
+<%= form_for(@user_show) do |f| %>
+	<h1>New Tv Show</h1>
+
+	<div class="actions">
+		Select your show<br>
+		<% if @tv_shows && @tv_shows.any? %>
+			<% @tv_shows.each do |show| %>
+				<li>
+				  <%= hidden_field_tag(:user_id, @user_id) %>
+				  <%= hidden_field_tag(:tv_show, show.id) %>
+				  <%= f.submit "#{show.title}" %>
+				</li>
+			<% end %>
+		<% end %>
+	</div>
+
+	<%= link_to 'Back', new_tv_show_path(user: @user_id) %>
+<% end %>

@@ -1,0 +1,6 @@
+<% provide(:button_text, "Create profile") %>
+<h1>Sign up</h1>
+
+<%= render 'form', user: @user, button: t('users.new.button')  %>
+
+<%= link_to 'Back', users_path %>
