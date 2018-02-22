@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }
 
+	after_save :activate
+
 	# Returns the hash digest of the given string.
 
 	def remember
@@ -53,9 +55,9 @@ class User < ActiveRecord::Base
 	end
 
 	# Sends activation email.
-	def send_activation_email
-	  UserMailer.account_activation(self).deliver_now
-	end
+	# def send_activation_email
+	#   UserMailer.account_activation(self).deliver_now
+	# end
 
 	# Sets the password reset attributes.
 	def create_reset_digest
