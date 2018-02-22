@@ -60,6 +60,7 @@ class BookingsController < ApplicationController
   def update
     respond_to do |format|
       if @booking.update(booking_params)
+        @booking.update_attributes(state: 'pending')
         format.html { redirect_to @booking.user, notice: 'Booking was successfully updated.' }
         format.json { render :show, status: :ok, location: @booking.user }
       else
