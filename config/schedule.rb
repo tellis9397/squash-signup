@@ -22,3 +22,7 @@
 every 1.day, at: '12:00 am' do
 	rake "book:book_normal_courts", output: "log/court_bookings.log"
 end
+
+every 1.day, at: '8:00 am' do
+	rake "book:book_day_of_play_courts", output: "log/court_bookings.log"
+end
