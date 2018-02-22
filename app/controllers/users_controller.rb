@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    redirect_to root_url and return unless @user.activated = true
+    redirect_to root_url and return unless @user.activated = true && @user == current_user
   end
 
   # GET /users/new
