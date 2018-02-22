@@ -17,12 +17,12 @@
 
   <div class="select">
     <%= f.label :day_of_week %>
-    <%= f.select(:day_of_week, options_for_select(booking.booking_days)) %>
+    <%= f.select(:day_of_week, options_for_select(booking.booking_days, selected: f.object.day_of_week)) %>
   </div>
 
   <div class="select">
     <%= f.label :time %>
-    <%= f.select(:time, options_for_select(booking.booking_times)) %>
+    <%= f.select(:time, options_for_select(booking.booking_times, selected: f.object.time)) %>
   </div>
 
   <div class="field" >
