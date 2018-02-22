@@ -19,10 +19,10 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 1.day, at: '5:46 am' do
-	rake "book:book_normal_courts", output: "log/court_bookings.log"
-end
+# every 1.day, at: '5:46 am' do
+# 	rake "book:book_normal_courts", output: "log/court_bookings.log"
+# end
 
-every 1.day, at: '1:50 pm' do
-	rake "book:book_day_of_play_courts", output: "log/court_bookings.log"
-end
+# every 1.day, at: '1:50 pm' do
+# 	rake "book:book_day_of_play_courts", output: "log/court_bookings.log"
+# end
