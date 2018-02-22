@@ -4,6 +4,8 @@ namespace :book do
 	end
 
 	task :book_day_of_play_courts => :environment do
-		BookUsers.call(Booking.where(day_of_play: true).where(state: 'pending'), true)
+		BookUsers.call(Booking.where(day_of_play: true)
+			.where(state: 'pending')
+			.where(day_of_week: Date.today.strftime("%A")), true)
 	end
 end
