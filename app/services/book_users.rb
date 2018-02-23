@@ -10,15 +10,13 @@ class BookUsers
 
 		# user_pages = sign_in_users
 		# to_book = reserve_court(user_pages)
-		puts Time.now
 		bookings.each do |booking|
-			booked_courts << fill_booking(booking, sleep_for)
+			booked_courts << fill_booking(booking, sleep_for, day_of)
 		end
-		puts Time.now
 		booked_courts
 	end
 
-	def self.fill_booking(booking, sleep_for)
+	def self.fill_booking(booking, sleep_for, day_of)
 		opponent_first_name = booking.opponent_first
 		opponent_last_name = booking.opponent_last
 
@@ -49,7 +47,7 @@ class BookUsers
 
 			page = page.link_with(text: "SQUASH BOOKINGS").click
 
-			page = page.link_with(text: "#{booking_date}").click
+			page = day_of ? page : page.link_with(text: "#{booking_date}").click
 
 			url_params = page.links_with(text: " #{booking_time}").first.attributes.attributes['href'].value.delete(",").split("'")
 			url_params.shift; url_params.pop
@@ -59,7 +57,6 @@ class BookUsers
 			url = "Booking?pAction=#{url_params[0]}&pTabServiceID=5926&pTimeSlotID=#{url_params[1]}&pBookingDate=#{url_params[2]}&pStartTime=#{url_params[3]}&pLocationID=#{url_params[4]}&pSpecID=#{url_params[5]}&pFunction=#{url_params[6]}"
 
 			page = mechanize.get(url)
-			puts Time.now
 			sleep(sleep_for)
 
 			form = page.forms.first
@@ -68,7 +65,6 @@ class BookUsers
 			form.pFunction = "U"
 			form.pBookeePosition = "2"
 			page = form.submit
-			puts Time.now
 			sleep(sleep_for)
 
 			form = page.forms.first
@@ -78,7 +74,6 @@ class BookUsers
 
 			form.pAction = "350"
 			page = form.submit
-			puts Time.now
 			sleep(sleep_for)
 
 			form = page.forms.first
