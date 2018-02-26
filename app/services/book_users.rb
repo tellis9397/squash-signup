@@ -49,6 +49,12 @@ class BookUsers
 
 			page = day_of ? page : page.link_with(text: "#{booking_date}").click
 
+			if day_of
+				while page.links_with(text: " #{booking_time}").blank? && Time.zone.now < Time.zone.parse("14:01")
+					page = page.link_with(text: "Today").click
+				end
+			end
+
 			url_params = page.links_with(text: " #{booking_time}").first.attributes.attributes['href'].value.delete(",").split("'")
 			url_params.shift; url_params.pop
 
