@@ -1,8 +1,5 @@
 class BookUsers
 	def self.call(bookings, day_of)
-		date = Date.today
-		day_of_week_s = Date.today.strftime("%A")
-
 		booked_courts = []
 		remove_and_reset_bookings
 
@@ -80,7 +77,6 @@ class BookUsers
 
 			form.pAction = "350"
 			page = form.submit
-			sleep(sleep_for)
 
 			form = page.forms.first
 			form.pAction = "220"
@@ -159,4 +155,17 @@ end
 # 			form = page.forms.first
 # 		end
 # 	end
+# end
+
+# Thread testing
+# def thread_tester
+# (10).times do |x|
+# Thread.new do
+# sleep(x)
+# puts "Thread ##{x}"
+# ActiveRecord::Base.connection.close
+# end
+# puts "here"
+# end
+# puts "and done"
 # end
